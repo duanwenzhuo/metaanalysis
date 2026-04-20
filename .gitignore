@@ -1,0 +1,51 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Jupyter
+.ipynb_checkpoints/
+
+# 数据文件（用户本地数据，不上传）
+data/
+*.h5ad
+*.h5
+*.tar.gz
+*.loom
+*.csv
+
+# 缓存
+cache/
+logs/
+*.log
+
+# Mac
+.DS_Store
+*.DS_Store
+
+# 测试产生的临时文件
+.pytest_cache/
+.coverage
+htmlcov/
+
+# BioAnalysis 特有缓存
+workflow/*.json
+workflow/*.pkl
+workflow/checkpoints/
+
+# 生成的报告（用户自己生成，不上传）
+reports/
+figures/
