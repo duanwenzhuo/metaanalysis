@@ -9,57 +9,8 @@
 - 📖 **假设驱动**：输入自然语言假设，自动拆解为可检验命题
 - 🔬 **无监督分析**：无需标注，GSVA + Marker Score 自动细胞类型注释
 - 🛠️ **42+ 生物信息学技能**：模块化、可组合、契约验证
-- 🔧 **三层自进化**：L0 原子技能 → L1 模板管线 → L2 自愈生成
 - 📊 **Meta 分析**：Cohen's d + 随机效应模型，跨数据集效应量合并
 
----
-
-## 📦 安装
-
-```bash
-# 1. 克隆仓库
-git clone https://github.com/duanwenzhuo/metaanalysis.git
-cd metaanalysis
-
-# 2. 创建虚拟环境（推荐）
-python3 -m venv venv
-source venv/bin/activate  # Linux/macOS
-# venv\Scripts\activate     # Windows
-
-# 3. 安装依赖
-pip install -r requirements.txt
-
-# 4. 安装 R 依赖（R 用于 DESeq2/edgeR）
-# 请确保 R >= 4.2 已安装，然后运行：
-Rscript scripts/install_r_packages.R
-```
-
----
-
-## 🚀 快速开始
-
-```bash
-# 进入项目目录
-cd metaanalysis
-
-# 运行完整流水线（假设 → 文献 → GEO → 效应量 → Meta分析 → 报告）
-python3 -m main "T cell exhaustion is increased in tumor microenvironment"
-
-# 仅文献调研（Phase 2）
-python3 scripts/phase2_literature_miner.py "Macrophage M2 polarization in cancer"
-
-# 仅 Meta 分析（Phase 5，已有的假设）
-python3 scripts/phase5_meta_orchestrator.py --hypothesis-id h_001_t_cell_exhaustion
-
-# 生成报告
-python3 scripts/phase6_report_generator.py --hypothesis-id h_001_t_cell_exhaustion
-
-# 查看已有假设
-python3 -m main --list
-
-# 断点续跑
-python3 -m main --resume h_20260417_xxxxxx
-```
 
 ---
 
@@ -155,34 +106,7 @@ hypothesis_parser → literature_miner → geo_retriever
 | | `cell_cycle` | CellCycleScoring 细胞周期 |
 | **splicing** | *(更多技能...) | |
 
-### 使用示例
 
-```python
-from bioskills import SkillRegistry
-
-registry = SkillRegistry()
-
-# 列出所有技能
-registry.list()
-
-# 获取技能
-qc = registry.get("qc")
-cohens_d = registry.get("cohens_d")
-
-# 执行技能
-result = qc.execute({
-    "adata": my_adata,
-    "params": {"min_genes": 200, "min_cells": 3, "pct_mt_max": 20}
-})
-
-# 链式执行（通过 SkillPipelineEngine）
-from bioskills import SkillPipelineEngine
-engine = SkillPipelineEngine()
-result = engine.run(
-    skills=["qc", "normalize", "hvg", "pca", "neighbors", "leiden", "gsva", "cohens_d"],
-    state={"adata": my_adata}
-)
-```
 
 ---
 
