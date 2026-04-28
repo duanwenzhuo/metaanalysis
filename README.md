@@ -55,9 +55,11 @@ metaanalysis/
     ├── config.py, constants.py
     ├── types.py, utils.py, exceptions.py
 
-<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/88aa799c-1a7a-40e9-a1ea-76aaebc8f131" />
+
 
 ```
+
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/88aa799c-1a7a-40e9-a1ea-76aaebc8f131" />
 
 ### LangGraph 工作流
 
